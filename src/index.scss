@@ -1,0 +1,99 @@
+/*
+COLORIDAS
+Kalnia Glaze
+Honk
+
+CURSIVAS
+Playwrite AR (Pequeno Principe)
+Playwrite Österreich (Pequeno Principe escuro + aberto)
+Playwrite België Vlaams Gewest (Pequeno Principe negrito + aberto)
+Dancing Script (Borboleta)
+Shadows Into Light (Diario de um banana - normal)
+Caveat (Diario de um banana - pequen
+
+ITALICAS
+Edu AU VIC WA NT Hand
+Montserrat
+Raleway
+Bona Nova SC
+Bodoni Moda SC
+Baskervville SC
+*/
+@import url('https://fonts.googleapis.com/css2?family=Baskervville+SC&family=Bodoni+Moda+SC:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&family=Caveat:wght@400..700&family=Dancing+Script:wght@400..700&family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&family=Honk&family=Kalnia+Glaze:wght@100..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playwrite+AR:wght@100..400&family=Playwrite+AT:ital,wght@0,100..400;1,100..400&family=Playwrite+BE+VLG:wght@100..400&family=Raleway:ital,wght@0,100..900;1,100..900&family=Shadows+Into+Light&display=swap');
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+
+a,a:visited, a:link {
+  color: inherit;
+}
+
+.pagina {
+  background-color: #f5f6fa;
+  min-height: 100vh;
+
+  .cabecalho {
+    background-color: #fff;
+    padding: 30px 50px;
+    
+    
+    h1 {    
+      color: #606060;
+      font: 600 32px 'Poppins';
+    }
+
+  }
+
+  .secao {
+    background-color: #fff;
+    padding: 30px;
+    box-shadow: 0px 0px 15px 2px #e6e6e6;
+
+    border-radius: 5px;
+    margin: 50px 60px;
+    max-width: 1000px;
+
+    font: 400 22px 'Poppins';
+
+
+    h1 {    
+      color: #404040;
+      font: 500 32px 'Poppins';
+      margin-bottom: 30px;
+    }
+
+    input, select, textarea {
+      padding: 10px;
+      border-style: solid;
+      border-color: #d1d1d1;
+      border-radius: 3px;
+      border-width: 2px;
+      min-width: 400px;
+      
+      font: 400px 22px 'Poppins';
+      color: #606060;
+    }
+
+    input[type=checkbox] {
+      min-width: auto;
+    }
+
+    button {
+      background-color: #0084ff;      
+      color: #fff;
+      padding: 14px 30px;
+      border-radius: 3px;
+      
+      font: 500px 22px 'Poppins';
+      outline: none;
+      border: none;
+    }
+
+  }
+
+}
