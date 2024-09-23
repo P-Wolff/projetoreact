@@ -79,8 +79,61 @@
         .entrada {
             margin: 30px 0px ;
         }
+
+        ul {
+            list-style-type: none;
+        }
     }
 
+    .planos {
+
+        .entrada{
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            gap: 20px;
+        }
+
+        .lista {
+            margin-top: 30px;
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .plano {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            width: 300px;
+            padding: 20px 20px 60px 20px;
+            border-radius: 30px;
+            box-shadow: 0px 5px 10px 2px #d0d0d0;
+
+            .cor {
+                border-radius: 30px;
+                width: 50px;
+                height: 40px;
+                background-color: #3065b5;
+            }
+
+            h1 {
+                     /*  width/heigt 
+                           x  / y     */
+                font: 500 20px/30px 'Montesserat';
+                color: #000;
+                margin: 0;
+                text-align: center;
+            }
+
+            h2 {
+                font: 500 16px/30px 'Montesserat';
+                color: #000;
+                text-align: center;
+            }
+        }
+    }
 }
 
 

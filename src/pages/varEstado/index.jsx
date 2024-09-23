@@ -29,6 +29,14 @@ export default function VarEstado() {
     {/* Variaveis da Metas */} 
     const [ novaMeta, setNovaMeta ] = useState('');
     const [ listaMetas, setListaMetas ] = useState([]);
+    const [ editando, setEditando ] = useState(-1);
+
+
+    {/* Variaveis da Planos */} 
+    const [ plano, setPlano ] = useState('');
+    const [ situacao, setSituacao ] = useState('');
+    const [ cor, setCor ] = useState('');
+    const [ listaPlanos, setListaPlanos ] = useState([]);
 
 
     {/* contador */} 
@@ -62,8 +70,18 @@ export default function VarEstado() {
         Criará um novo vetor pelos colchetes = []; colocará todos os itens do vetor atual para o novo que foi criado, em seguida, será jogado para o set */}
 
         if ( novaMeta != '' ) {
-            setListaMetas([ ...listaMetas, novaMeta ])
-            setNovaMeta('')
+
+            if (editando == -1) {
+                setListaMetas([ ...listaMetas, novaMeta ])
+                setNovaMeta('');
+            }
+            else {
+                listaMetas[ editando ] = novaMeta;
+                setListaMetas([...listaMetas]);
+                setNovaMeta('');
+                setEditando(-1);
+            }
+            
         }
     }
 
@@ -73,16 +91,102 @@ export default function VarEstado() {
         }
     }
 
+    function removerMeta( pos ) {
+        listaMetas.splice( pos, 1 );
+        setListaMetas([...listaMetas]);
+    }
+
+    function alterarMeta( pos ) {
+        setListaMetas(listaMetas[ pos ])
+        setEditando( pos );
+    }
+
+    {/* Função da Planos */} 
+    function adicionarPlanos() {
+        let novoPlano = {
+            titulo: plano,
+            tempo: situacao,
+            tema: cor
+        }
+
+        setListaPlanos([...listaPlanos, novoPlano])
+
+        setPlano('')
+        setSituacao('')
+        setCor('')
+    }
+
+    console.log(listaPlanos);
+
+
     return(
         <div className="pagina-varestado pagina">
             
             <header className="cabecalho">
-                <h1>ReactJS | Variedade de Estado</h1>
+                <h1> ReactJS | Variedade de Estado </h1>
             </header>
+
+            <div className="secao planos">
+                <h1> Meus Planos atuais </h1>
+
+                <div className="entrada">
+                    <input type="text" placeholder='Meu plano aqui' value={plano} onChange={ e => setPlano( e.target.value )}/>
+
+                    <input type="text" placeholder='Situação do plano aqui' value={situacao} onChange={ e => setSituacao( e.target.value )} />
+
+                    <input type="text" placeholder='Cor de identificação' value={cor} onChange={ e => setCor( e.target.value )} />
+                    
+                    <button onClick={adicionarPlanos}> Adicionar Plano </button>
+                </div>
+
+                <div className="lista">
+
+                    {listaPlanos.map(( item, pos ) => 
+                        <div className='plano' key={ pos } >
+                            <div className='cor' style={{backgroundColor: item.item}}> &nbsp; </div>
+                            
+                            <div>
+                                <h1> { item.titulo } </h1>
+                                <h2> { item.tempo } </h2>    
+                            </div>
+                        </div>
+                    )}
+
+                    <div className='plano'>
+                        <div className='cor'> &nbsp; </div>
+                        
+                        <div>
+                            <h1> Finalizar ensino superior </h1>
+                            <h2> Em andamento </h2>    
+                        </div>
+                    </div>
+
+                    <div className='plano'>
+                            <div className='cor'> &nbsp; </div>
+                            
+                            <div>
+                                <h1> Finalizar ensino superior </h1>
+                                <h2> Em andamento </h2>    
+                            </div>
+                    </div>
+
+                    <div className='plano'>
+                            <div className='cor'> &nbsp; </div>
+                            
+                            <div>
+                                <h1> Finalizar ensino superior </h1>
+                                <h2> Em andamento </h2>    
+                            </div>
+                    </div>
+
+                </div>
+
+                
+            </div>
 
             {/* Metas */} 
             <div className="secao metas">
-                <h1>Metas para os próximos 5 anos</h1>
+                <h1> Metas para os próximos 5 anos </h1>
 
                 <div className='entrada'>
                     <input type="text" placeholder='Digite sua meta aqui' onKeyUp={ teclaApertada } value={ novaMeta } onChange={ e => setNovaMeta( e.target.value )} />
@@ -90,8 +194,12 @@ export default function VarEstado() {
                 </div>
 
                 <ul>
-                    {listaMetas.map( item =>
-                        <li> { item } </li>
+                    {listaMetas.map( ( item, pos ) =>
+                        <li key={ pos }> 
+                            <i className='fa fa-pen-to-square' onClick={() => alterarMeta( pos )} ></i> &nbsp;
+                            <i className='fa fa-trash-can' onClick={() => removerMeta( pos )}></i> &nbsp;
+                            { item } 
+                        </li>
                     )}
                 </ul>
                 
@@ -100,7 +208,7 @@ export default function VarEstado() {
 
             {/* Ingresso */} 
             <div className="secao ingresso">
-                <h1>Venda de Ingressos</h1>
+                <h1> Venda de Ingressos </h1>
 
                 <div className="entrada">
                     <div>
@@ -134,7 +242,7 @@ export default function VarEstado() {
 
             {/* calculadora */} 
             <div className="secao calculadora">
-                <h1>Calculadora</h1>
+                <h1> Calculadora </h1>
 
                 <div className="entrada">
                     <input type="text" value={ num1 } onChange={ e => setNum1( e.target.value )} />
@@ -149,7 +257,7 @@ export default function VarEstado() {
 
             {/* contador */} 
             <div className="secao">
-                <h1>Contador</h1>
+                <h1> Contador </h1>
 
                 <div className="cont">
                     <button onClick={ aumentar }>+</button>
@@ -176,7 +284,7 @@ export default function VarEstado() {
             </div>
 
             <div className="secao">
-                <h1>Programar é Lindezinha? { marcouOpcaoS4 ? 'Sim' : 'Não' }</h1>
+                <h1> Programar é Lindezinha? { marcouOpcaoS4 ? 'Sim' : 'Não' } </h1>
                 <input type="checkbox" checked={ marcouOpcaoS4 } onChange={     e => setMarcouOpcaoS4( e.target.checked ) } /> Programar é lindezinha?
             </div>
 
